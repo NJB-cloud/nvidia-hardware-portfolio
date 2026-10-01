@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Open GTKWave",
+            "type": "shell",
+            "command": "C:\\Users\\Core Computers\\Downloads\\CGTKWave\\gtkwave-3.3.90-bin-win64\\gtkwave64\\bin\\gtkwave.exe",
+            "args": [
+                "01_RV32I_ALU_RegisterFile/waveform/alu_wave.vcd"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

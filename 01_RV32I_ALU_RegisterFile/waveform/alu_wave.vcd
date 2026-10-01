@@ -1,0 +1,135 @@
+$date
+	Wed Sep 30 01:46:14 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_rv32i_alu $end
+$var wire 1 ! zero $end
+$var wire 32 " result [31:0] $end
+$var wire 1 # carry $end
+$var reg 32 $ a [31:0] $end
+$var reg 4 % alu_sel [3:0] $end
+$var reg 32 & b [31:0] $end
+$scope module dut $end
+$var wire 32 ' a [31:0] $end
+$var wire 4 ( alu_sel [3:0] $end
+$var wire 32 ) b [31:0] $end
+$var wire 1 ! zero $end
+$var reg 1 # carry $end
+$var reg 32 * result [31:0] $end
+$var reg 33 + temp [32:0] $end
+$upscope $end
+$scope task check $end
+$var reg 32 , expected [31:0] $end
+$var reg 4 - operation [3:0] $end
+$var reg 32 . test_a [31:0] $end
+$var reg 32 / test_b [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b101 /
+b1010 .
+b0 -
+b1111 ,
+b1111 +
+b1111 *
+b101 )
+b0 (
+b1010 '
+b101 &
+b0 %
+b1010 $
+0#
+b1111 "
+0!
+$end
+#10000
+b101 +
+0!
+b101 "
+b101 *
+b1 %
+b1 (
+b1 -
+b101 ,
+#20000
+1!
+b0 "
+b0 *
+b10 %
+b10 (
+b1010101010101011010101010101010 &
+b1010101010101011010101010101010 )
+b10101010101010100101010101010101 $
+b10101010101010100101010101010101 '
+b10 -
+b1010101010101011010101010101010 /
+b10101010101010100101010101010101 .
+b0 ,
+#30000
+0!
+b11111111111111111111111111111111 "
+b11111111111111111111111111111111 *
+b11 %
+b11 (
+b11 -
+b11111111111111111111111111111111 ,
+#40000
+0!
+b11111111111111111111111111111111 "
+b11111111111111111111111111111111 *
+b100 %
+b100 (
+b100 -
+#50000
+0!
+b10000 "
+b10000 *
+b101 %
+b101 (
+b100 &
+b100 )
+b1 $
+b1 '
+b101 -
+b100 /
+b1 .
+b10000 ,
+#60000
+0!
+b100 "
+b100 *
+b110 %
+b110 (
+b10 &
+b10 )
+b10000 $
+b10000 '
+b110 -
+b10 /
+b10000 .
+b100 ,
+#70000
+0!
+b1 "
+b1 *
+b111 %
+b111 (
+b1 &
+b1 )
+b11111111111111111111111111111111 $
+b11111111111111111111111111111111 '
+b111 -
+b1 /
+b11111111111111111111111111111111 .
+b1 ,
+#90000
