@@ -1,0 +1,14 @@
+# Simulation/build artifacts
+*_test
+*.vvp
+*.out
+*.log
+
+# Temporary waveform files
+*.fst
+*.lxt
+*.lxt2
+
+# Older/root-level waveform artifacts
+/register_file_wave.vcd
+/rv32i_cpu_wave.vcd
