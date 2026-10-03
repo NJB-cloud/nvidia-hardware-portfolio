@@ -1,0 +1,42 @@
+RV32I 5-STAGE PIPELINED CPU
+FUNCTIONAL COVERAGE REPORT
+
+Verification run:
+pipelined_functional_coverage_tb.sv
+
+Instruction bins : 9 / 9
+Forwarding bins  : 3 / 3
+Hazard bins      : 1 / 1
+Branch bins      : 3 / 3
+Architecture bins: 1 / 1
+
+TOTAL BINS       : 17 / 17
+FUNCTIONAL COVERAGE: 100%
+
+Instruction counters
+ADD = 16
+SUB = 1
+AND = 1
+OR  = 1
+XOR = 1
+SLT = 1
+LW  = 2
+SW  = 1
+BEQ = 2
+
+Pipeline-control counters
+EX/MEM forwarding = 3
+MEM/WB forwarding = 3
+Dual forwarding   = 1
+Load-use hazards  = 1
+Taken branches    = 1
+Not-taken branches= 1
+Branch flushes    = 1
+x0 protection     = 1
+
+TOTAL MONITORED CYCLES = 116
+
+Interpretation:
+100% represents 17/17 explicitly defined functional
+coverage bins in this verification environment. It does
+not represent exhaustive RV32I instruction-space coverage.
