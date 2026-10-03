@@ -1,0 +1,7 @@
+# Simulation build artifacts
+*_test
+*.vvp
+*.out
+
+# GTKWave temporary files
+*.gtkw
