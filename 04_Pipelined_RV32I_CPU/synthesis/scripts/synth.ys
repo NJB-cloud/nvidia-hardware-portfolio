@@ -1,0 +1,42 @@
+# ============================================================
+# RV32I 5-Stage Pipeline CPU Synthesis
+# Yosys Script
+# ============================================================
+
+read_verilog -sv \
+rtl/alu.sv \
+rtl/alu_control.sv \
+rtl/control_unit.sv \
+rtl/pc.sv \
+rtl/instruction_memory.sv \
+rtl/register_file.sv \
+rtl/immediate_generator.sv \
+rtl/forwarding_unit.sv \
+rtl/hazard_unit.sv \
+rtl/if_id_reg.sv \
+rtl/id_ex_reg.sv \
+rtl/ex_stage.sv \
+rtl/ex_mem_reg.sv \
+rtl/mem_wb_reg.sv \
+rtl/pipelined_core.sv
+
+# Select top module
+hierarchy -top pipelined_core
+
+# Convert processes
+proc
+opt
+
+# Optimize memory
+memory
+opt
+
+# Technology mapping
+techmap
+opt
+
+# Generate synthesis statistics
+stat
+
+# Save synthesized design
+write_json synthesis/reports/pipelined_cpu.json
