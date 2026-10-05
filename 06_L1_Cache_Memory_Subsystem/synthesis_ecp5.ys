@@ -1,0 +1,167 @@
+# ============================================================
+# PROJECT 6
+# L1 CACHE MEMORY SUBSYSTEM
+#
+# ECP5 SYNTHESIS WITH CONVENTIONAL ABC LUT MAPPING
+# Yosys 0.69
+#
+# Purpose:
+#   Synthesize the L1 cache for the ECP5 architecture while
+#   avoiding the ABC9/XAIGER2 failure in this Yosys build.
+#
+# Final target:
+#   nextpnr-ecp5 compatible JSON netlist
+# ============================================================
+
+
+# ============================================================
+# 1. READ RTL
+# ============================================================
+
+read_verilog -sv .\rtl\cache_tag_array.sv
+read_verilog -sv .\rtl\cache_data_array.sv
+read_verilog -sv .\rtl\cache_controller.sv
+read_verilog -sv .\rtl\l1_cache.sv
+
+
+# ============================================================
+# 2. OFFICIAL LATTICE/ECP5 FLOW THROUGH MAP_FFS
+#
+# This performs:
+#   - RTL/process synthesis
+#   - memory inference
+#   - RAM mapping
+#   - gate preparation
+#   - flip-flop legalization
+#
+# Stop before the problematic ABC9 LUT stage.
+# ============================================================
+
+synth_lattice -top l1_cache -family ecp5 -run begin:map_ffs
+
+
+# ============================================================
+# 3. CONVENTIONAL ABC LUT MAPPING
+#
+# ECP5 logic is LUT4 based.
+#
+# This replaces the problematic ABC9 stage used by the
+# standard Yosys ECP5 flow.
+# ============================================================
+
+abc -lut 4
+
+
+# ============================================================
+# 4. MAP GENERIC LOGIC TO TRELLIS/ECP5 CELLS
+# ============================================================
+
+techmap -map "C:/Users/Core Computers/OneDrive/Desktop/oss-cad-suite/share/yosys/lattice/cells_map_trellis.v"
+
+
+# ============================================================
+# 5. ECP5 LUT OPTIMIZATION
+# ============================================================
+
+opt_lut_ins -tech lattice
+
+opt_clean
+clean
+
+
+# ============================================================
+# 6. FINAL FLIP-FLOP LEGALIZATION
+#
+# Ensure remaining generic sequential cells are converted
+# into forms supported by the installed Trellis mapping.
+# ============================================================
+
+dfflegalize -cell $_DFF_?_ 01 \
+            -cell $_DFF_?P?_ r \
+            -cell $_SDFF_?P?_ r \
+            -cell $_DFFE_??_ 01 \
+            -cell $_DFFE_?P??_ r \
+            -cell $_SDFFE_?P??_ r
+
+
+# ============================================================
+# 7. MAP FLIP-FLOPS TO TRELLIS_FF
+# ============================================================
+
+techmap -map "C:/Users/Core Computers/OneDrive/Desktop/oss-cad-suite/share/yosys/lattice/cells_map_trellis.v"
+
+opt_clean
+clean
+
+
+# ============================================================
+# 8. REMOVE REMAINING GENERIC INVERTERS
+#
+# dfflegalize/flip-polarity conversion can introduce
+# $_NOT_ cells. These must be consumed before JSON export
+# because nextpnr-ecp5 does not accept generic $_NOT_ cells.
+#
+# Conventional ABC is used again only for the remaining
+# combinational logic. Technology FF/RAM cells remain mapped.
+# ============================================================
+
+abc -lut 4
+
+opt_clean
+clean
+
+
+# ============================================================
+# 9. FINAL TRELLIS LUT MAPPING
+#
+# Map any LUTs produced by the cleanup ABC pass into the
+# installed ECP5/Trellis technology cells.
+# ============================================================
+
+techmap -map "C:/Users/Core Computers/OneDrive/Desktop/oss-cad-suite/share/yosys/lattice/cells_map_trellis.v"
+
+opt_lut_ins -tech lattice
+
+opt_clean
+clean
+
+
+# ============================================================
+# 10. FINAL STRUCTURAL CHECK
+# ============================================================
+
+hierarchy -check
+check -noinit
+
+
+# ============================================================
+# 11. FINAL SYNTHESIS STATISTICS
+# ============================================================
+
+stat
+
+
+# ============================================================
+# 12. PREPARE TECHNOLOGY PRIMITIVES FOR JSON
+#
+# Library simulation models such as DPR16X4C contain
+# behavioral processes. They are technology primitives,
+# so mark them as blackboxes before JSON serialization.
+# ============================================================
+
+blackbox =A:whitebox
+
+
+# ============================================================
+# 13. FINAL CHECK AFTER BLACKBOXING
+# ============================================================
+
+hierarchy -check
+check -noinit
+
+
+# ============================================================
+# 14. FINAL JSON NETLIST
+# ============================================================
+
+write_json .\l1_cache_ecp5.json

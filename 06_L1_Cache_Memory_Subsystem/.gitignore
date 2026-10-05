@@ -1,0 +1,22 @@
+# ============================================================
+# Project 6 - L1 Cache
+# Git ignore rules
+# ============================================================
+
+# Compiled simulation executables
+/a.out
+/*_test
+/*_compile
+
+# Generic simulation output
+*.vvp
+
+# Temporary synthesis files
+*.tmp
+*.bak
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

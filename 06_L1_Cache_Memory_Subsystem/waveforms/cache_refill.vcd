@@ -1,0 +1,321 @@
+$date
+	Mon Oct 05 20:21:14 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module cache_refill_testbench $end
+$var wire 1 ! mem_req_write $end
+$var wire 128 " mem_req_wdata [127:0] $end
+$var wire 1 # mem_req_valid $end
+$var wire 32 $ mem_req_addr [31:0] $end
+$var wire 1 % cpu_rsp_valid $end
+$var wire 32 & cpu_rsp_rdata [31:0] $end
+$var wire 1 ' cpu_req_ready $end
+$var reg 1 ( clk $end
+$var reg 32 ) cpu_req_addr [31:0] $end
+$var reg 4 * cpu_req_be [3:0] $end
+$var reg 1 + cpu_req_valid $end
+$var reg 32 , cpu_req_wdata [31:0] $end
+$var reg 1 - cpu_req_write $end
+$var reg 1 . mem_req_ready $end
+$var reg 128 / mem_rsp_rdata [127:0] $end
+$var reg 1 0 mem_rsp_valid $end
+$var reg 1 1 reset_n $end
+$var integer 32 2 memory_request_count [31:0] $end
+$scope module dut $end
+$var wire 1 3 cache_hit $end
+$var wire 1 ( clk $end
+$var wire 32 4 cpu_req_addr [31:0] $end
+$var wire 4 5 cpu_req_be [3:0] $end
+$var wire 1 + cpu_req_valid $end
+$var wire 32 6 cpu_req_wdata [31:0] $end
+$var wire 1 - cpu_req_write $end
+$var wire 1 . mem_req_ready $end
+$var wire 128 7 mem_req_wdata [127:0] $end
+$var wire 128 8 mem_rsp_rdata [127:0] $end
+$var wire 1 0 mem_rsp_valid $end
+$var wire 1 1 reset_n $end
+$var wire 32 9 victim_address [31:0] $end
+$var wire 1 : update_enable $end
+$var wire 1 ; tag_write $end
+$var wire 1 < tag_valid $end
+$var wire 22 = tag_out [21:0] $end
+$var wire 1 > tag_dirty $end
+$var wire 22 ? request_tag [21:0] $end
+$var wire 4 @ request_offset [3:0] $end
+$var wire 6 A request_index [5:0] $end
+$var wire 1 ! mem_req_write $end
+$var wire 1 # mem_req_valid $end
+$var wire 32 B line_address [31:0] $end
+$var wire 1 C data_write $end
+$var wire 128 D data_out [127:0] $end
+$var wire 1 % cpu_rsp_valid $end
+$var wire 1 ' cpu_req_ready $end
+$var parameter 32 E ADDR_WIDTH $end
+$var parameter 32 F DATA_WIDTH $end
+$var parameter 32 G LINE_COUNT $end
+$var parameter 32 H LINE_WIDTH $end
+$var reg 32 I cpu_addr_q [31:0] $end
+$var reg 4 J cpu_be_q [3:0] $end
+$var reg 32 K cpu_rsp_rdata [31:0] $end
+$var reg 32 L cpu_wdata_q [31:0] $end
+$var reg 1 M cpu_write_q $end
+$var reg 128 N data_in [127:0] $end
+$var reg 1 O dirty_in $end
+$var reg 32 P mem_req_addr [31:0] $end
+$var reg 128 Q refill_data_q [127:0] $end
+$var reg 1 R refill_valid_q $end
+$var reg 22 S tag_in [21:0] $end
+$var reg 1 T valid_in $end
+$scope module controller $end
+$var wire 1 3 cache_hit $end
+$var wire 1 ( clk $end
+$var wire 1 + cpu_req_valid $end
+$var wire 1 . mem_req_ready $end
+$var wire 1 0 mem_rsp_valid $end
+$var wire 1 1 reset_n $end
+$var wire 1 > victim_dirty $end
+$var reg 1 ' cpu_req_ready $end
+$var reg 1 % cpu_rsp_valid $end
+$var reg 1 C data_write $end
+$var reg 1 # mem_req_valid $end
+$var reg 1 ! mem_req_write $end
+$var reg 4 U next_state [3:0] $end
+$var reg 4 V state [3:0] $end
+$var reg 1 ; tag_write $end
+$var reg 1 : update_enable $end
+$upscope $end
+$scope module data_array $end
+$var wire 1 ( clk $end
+$var wire 6 W index [5:0] $end
+$var wire 128 X rdata [127:0] $end
+$var wire 128 Y wdata [127:0] $end
+$var wire 1 C we $end
+$var parameter 32 Z LINE_COUNT $end
+$var parameter 32 [ LINE_WIDTH $end
+$upscope $end
+$scope module tag_array $end
+$var wire 1 ( clk $end
+$var wire 1 O dirty_in $end
+$var wire 1 > dirty_out $end
+$var wire 6 \ index [5:0] $end
+$var wire 1 1 reset_n $end
+$var wire 22 ] tag_in [21:0] $end
+$var wire 22 ^ tag_out [21:0] $end
+$var wire 1 T valid_in $end
+$var wire 1 < valid_out $end
+$var wire 1 ; we $end
+$var parameter 32 _ LINE_COUNT $end
+$var parameter 32 ` TAG_WIDTH $end
+$var integer 32 a i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10110 `
+b1000000 _
+b10000000 [
+b1000000 Z
+b10000000 H
+b1000000 G
+b100000 F
+b100000 E
+$end
+#0
+$dumpvars
+b1000000 a
+b0 ^
+b0 ]
+b0 \
+bx Y
+bx X
+b0 W
+b0 V
+b0 U
+1T
+b0 S
+0R
+b0 Q
+b0 P
+0O
+bx N
+0M
+b0 L
+bx K
+b0 J
+b0 I
+bx D
+0C
+b0 B
+b0 A
+b0 @
+b0 ?
+0>
+b0 =
+0<
+0;
+0:
+b0 9
+b0 8
+bx 7
+b0 6
+b1111 5
+b0 4
+03
+b0 2
+01
+00
+b0 /
+1.
+0-
+b0 ,
+0+
+b1111 *
+b0 )
+0(
+1'
+bx &
+0%
+b0 $
+0#
+bx "
+0!
+$end
+#5000
+b1000000 a
+1(
+#10000
+0(
+#15000
+b1000000 a
+1(
+#20000
+0(
+#25000
+11
+1(
+#30000
+0(
+#35000
+b1 U
+1+
+b1000000000000 )
+b1000000000000 4
+1(
+#40000
+0(
+#45000
+b100 S
+b100 ]
+b1000000000000 $
+b1000000000000 P
+b100 ?
+b1000000000000 B
+0'
+b10 U
+b1111 J
+b1000000000000 I
+b1 V
+0+
+1(
+#50000
+0(
+#55000
+b100 U
+b10 V
+1(
+#60000
+0(
+#65000
+1#
+b101 U
+b100 V
+1(
+#70000
+0(
+#75000
+0#
+b110 U
+b101 V
+10
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 /
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 8
+b1 2
+1(
+#80000
+0(
+#85000
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 N
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 Y
+1:
+1C
+1;
+b111 U
+1R
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 Q
+b110 V
+00
+1(
+#90000
+0(
+#95000
+13
+1%
+0:
+0C
+0;
+b0 U
+b10101010101010101010101010101010 &
+b10101010101010101010101010101010 K
+1<
+b1000000000000 9
+b100 =
+b100 ^
+b111 V
+0R
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 "
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 7
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 D
+b11011101110111011101110111011101110011001100110011001100110011001011101110111011101110111011101110101010101010101010101010101010 X
+1(
+#100000
+0(
+#105000
+1'
+0%
+b1 U
+b0 V
+1+
+1(
+#110000
+0(
+#115000
+0'
+b111 U
+b1 V
+0+
+1(
+#120000
+0(
+#125000
+1%
+b0 U
+b111 V
+1(
+#130000
+0(
+#135000
+1'
+0%
+b0 V
+1(
+#140000
+0(
+#145000
+1(

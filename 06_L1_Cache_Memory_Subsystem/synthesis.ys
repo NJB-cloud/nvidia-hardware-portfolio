@@ -1,0 +1,43 @@
+# ============================================================
+# Project 6 - L1 Cache Synthesis
+# Yosys synthesis flow
+# ============================================================
+
+# Read RTL
+read_verilog -sv .\rtl\cache_tag_array.sv
+read_verilog -sv .\rtl\cache_data_array.sv
+read_verilog -sv .\rtl\cache_controller.sv
+read_verilog -sv .\rtl\l1_cache.sv
+
+# Elaborate top-level design
+hierarchy -top l1_cache
+
+# Process behavioral RTL
+proc
+
+# Optimize
+opt
+
+# Flatten hierarchy for synthesis analysis
+flatten
+
+# Additional optimization
+opt
+
+# Convert processes to muxes / gates
+techmap
+
+# Optimize again
+opt
+
+# Remove unused logic
+clean
+
+# Technology-independent statistics
+stat
+
+# Generate synthesized RTL
+write_verilog -noattr .\synthesis_l1_cache.v
+
+# Final statistics
+stat

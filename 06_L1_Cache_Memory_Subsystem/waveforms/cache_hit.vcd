@@ -1,0 +1,217 @@
+$date
+	Mon Oct 05 20:08:38 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module cache_hit_testbench $end
+$var wire 32 ! mem_req_addr [31:0] $end
+$var wire 1 " mem_req_valid $end
+$var wire 128 # mem_req_wdata [127:0] $end
+$var wire 1 $ mem_req_write $end
+$var wire 1 % cpu_rsp_valid $end
+$var wire 32 & cpu_rsp_rdata [31:0] $end
+$var wire 1 ' cpu_req_ready $end
+$var reg 1 ( clk $end
+$var reg 32 ) cpu_req_addr [31:0] $end
+$var reg 4 * cpu_req_be [3:0] $end
+$var reg 1 + cpu_req_valid $end
+$var reg 32 , cpu_req_wdata [31:0] $end
+$var reg 1 - cpu_req_write $end
+$var reg 1 . mem_req_ready $end
+$var reg 128 / mem_rsp_rdata [127:0] $end
+$var reg 1 0 mem_rsp_valid $end
+$var reg 1 1 reset_n $end
+$scope module dut $end
+$var wire 1 2 cache_hit $end
+$var wire 1 ( clk $end
+$var wire 32 3 cpu_req_addr [31:0] $end
+$var wire 4 4 cpu_req_be [3:0] $end
+$var wire 1 + cpu_req_valid $end
+$var wire 32 5 cpu_req_wdata [31:0] $end
+$var wire 1 - cpu_req_write $end
+$var wire 128 6 data_in [127:0] $end
+$var wire 1 7 data_write $end
+$var wire 1 8 dirty_in $end
+$var wire 32 9 mem_req_addr [31:0] $end
+$var wire 1 . mem_req_ready $end
+$var wire 1 " mem_req_valid $end
+$var wire 128 : mem_req_wdata [127:0] $end
+$var wire 1 $ mem_req_write $end
+$var wire 128 ; mem_rsp_rdata [127:0] $end
+$var wire 1 0 mem_rsp_valid $end
+$var wire 1 1 reset_n $end
+$var wire 22 < tag_in [21:0] $end
+$var wire 1 = tag_write $end
+$var wire 1 > valid_in $end
+$var wire 1 ? tag_valid $end
+$var wire 22 @ tag_out [21:0] $end
+$var wire 1 A tag_dirty $end
+$var wire 22 B request_tag [21:0] $end
+$var wire 4 C request_offset [3:0] $end
+$var wire 6 D request_index [5:0] $end
+$var wire 1 E lookup_enable $end
+$var wire 128 F data_out [127:0] $end
+$var wire 1 % cpu_rsp_valid $end
+$var wire 1 ' cpu_req_ready $end
+$var parameter 32 G ADDR_WIDTH $end
+$var parameter 32 H DATA_WIDTH $end
+$var parameter 32 I LINE_COUNT $end
+$var parameter 32 J LINE_WIDTH $end
+$var reg 32 K cpu_rsp_rdata [31:0] $end
+$scope module controller $end
+$var wire 1 2 cache_hit $end
+$var wire 1 ( clk $end
+$var wire 1 + cpu_req_valid $end
+$var wire 1 1 reset_n $end
+$var reg 1 ' cpu_req_ready $end
+$var reg 1 % cpu_rsp_valid $end
+$var reg 1 E lookup_enable $end
+$var reg 2 L next_state [1:0] $end
+$var reg 2 M state [1:0] $end
+$upscope $end
+$scope module data_array $end
+$var wire 1 ( clk $end
+$var wire 6 N index [5:0] $end
+$var wire 128 O rdata [127:0] $end
+$var wire 128 P wdata [127:0] $end
+$var wire 1 7 we $end
+$var parameter 32 Q LINE_COUNT $end
+$var parameter 32 R LINE_WIDTH $end
+$upscope $end
+$scope module tag_array $end
+$var wire 1 ( clk $end
+$var wire 1 8 dirty_in $end
+$var wire 1 A dirty_out $end
+$var wire 6 S index [5:0] $end
+$var wire 1 1 reset_n $end
+$var wire 22 T tag_in [21:0] $end
+$var wire 22 U tag_out [21:0] $end
+$var wire 1 > valid_in $end
+$var wire 1 ? valid_out $end
+$var wire 1 = we $end
+$var parameter 32 V LINE_COUNT $end
+$var parameter 32 W TAG_WIDTH $end
+$var integer 32 X i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10110 W
+b1000000 V
+b10000000 R
+b1000000 Q
+b10000000 J
+b1000000 I
+b100000 H
+b100000 G
+$end
+#0
+$dumpvars
+b1000000 X
+b0 U
+b0 T
+b0 S
+b0 P
+bx O
+b0 N
+b0 M
+b0 L
+bx K
+bx F
+0E
+b0 D
+b0 C
+b0 B
+0A
+b0 @
+0?
+1>
+0=
+b0 <
+b0 ;
+b0 :
+b0 9
+08
+07
+b0 6
+b0 5
+b1111 4
+b0 3
+02
+01
+00
+b0 /
+1.
+0-
+b0 ,
+0+
+b1111 *
+b0 )
+0(
+1'
+bx &
+0%
+0$
+b0 #
+0"
+b0 !
+$end
+#5000
+b1000000 X
+1(
+#10000
+0(
+#15000
+11
+1(
+#20000
+0(
+#25000
+b1 L
+b100 <
+b100 T
+b100 B
+1+
+b1000000000000 )
+b1000000000000 3
+1(
+#30000
+0(
+#35000
+1E
+0'
+b10 L
+b1 M
+0+
+1(
+#40000
+0(
+#45000
+0E
+b0 L
+b10 M
+1(
+#50000
+0(
+#55000
+1'
+b0 M
+1(
+#60000
+0(
+#65000
+1(
+#70000
+0(
+#75000
+1(
+#80000
+0(
+#85000
+1(
