@@ -1,0 +1,10 @@
+# Simulation outputs
+reports/*.vvp
+reports/*.vcd
+
+# Backup files
+rtl/backup/
+
+# Temporary files
+*.log
+*.tmp
